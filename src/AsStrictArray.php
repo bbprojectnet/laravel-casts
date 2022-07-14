@@ -4,7 +4,7 @@ namespace BBProjectNet\LaravelCasts;
 
 use Illuminate\Contracts\Database\Eloquent\CastsAttributes;
 
-class AsArray implements CastsAttributes
+class AsStrictArray implements CastsAttributes
 {
 	/**
 	 * @inheritDoc
@@ -15,9 +15,13 @@ class AsArray implements CastsAttributes
 			return [];
 		}
 
-		$data = json_decode($value, true);
+		$value = json_decode($value, true);
 
-		return is_array($data) ? $data : [];
+		if (! is_array($value)) {
+			return [];
+		}
+
+		return $value;
 	}
 
 	/**
@@ -25,12 +29,18 @@ class AsArray implements CastsAttributes
 	 */
 	public function set($model, string $key, $value, array $attributes): array
 	{
-		if (! is_array($value)) {
+		if (! isset($value)) {
 			return null;
 		}
 
-		return [
-			$key => (bool)$value ? json_encode($value) : null,
-		];
+		if (! is_array($value)) {
+			$value = [$value];
+		}
+
+		if (count($value) === 0) {
+			return null;
+		}
+
+		return [$key => json_encode($value)];
 	}
 }

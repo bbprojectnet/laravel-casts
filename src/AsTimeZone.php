@@ -7,28 +7,32 @@ use Illuminate\Contracts\Database\Eloquent\CastsAttributes;
 
 class AsTimeZone implements CastsAttributes
 {
-    /**
-     * @inheritDoc
-     */
-    public function get($model, string $key, $value, array $attributes)
-    {
-        if (! isset($value)) {
-            return null;
-        }
+	/**
+	 * @inheritDoc
+	 */
+	public function get($model, string $key, $value, array $attributes)
+	{
+		if (! isset($value)) {
+			return null;
+		}
 
-        return new DateTimeZone($value);
-    }
+		return new DateTimeZone($value);
+	}
 
-    /**
-     * @inheritDoc
-     */
-    public function set($model, string $key, $value, array $attributes)
-    {
-        if (! $value instanceof DateTimeZone) {
-            return null;
-        }
+	/**
+	 * @inheritDoc
+	 */
+	public function set($model, string $key, $value, array $attributes)
+	{
+		if (! isset($value)) {
+			return null;
+		}
 
-        /** @var \DateTimeZone $value */
-        return $value->getName();
-    }
+		if (! $value instanceof DateTimeZone) {
+			$value = new DateTimeZone($value);
+		}
+
+		/** @var \DateTimeZone $value */
+		return $value->getName();
+	}
 }

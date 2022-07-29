@@ -12,7 +12,7 @@ class AsTimeZone implements CastsAttributes
 	 */
 	public function get($model, string $key, $value, array $attributes)
 	{
-		if (! isset($value)) {
+		if ($value === null) {
 			return null;
 		}
 
@@ -24,7 +24,7 @@ class AsTimeZone implements CastsAttributes
 	 */
 	public function set($model, string $key, $value, array $attributes)
 	{
-		if (! isset($value)) {
+		if ($value === null) {
 			return null;
 		}
 

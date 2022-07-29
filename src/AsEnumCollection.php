@@ -36,7 +36,7 @@ class AsEnumCollection implements CastsAttributes
 	{
 		$value = $this->asCollection->get($model, $key, $value, $attributes);
 
-		if (! isset($value)) {
+		if ($value === null) {
 			return null;
 		}
 

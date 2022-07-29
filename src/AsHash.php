@@ -12,7 +12,7 @@ class AsHash implements CastsInboundAttributes
 	 */
 	public function set($model, string $key, $value, array $attributes)
 	{
-		if (! isset($value)) {
+		if ($value === null) {
 			return null;
 		}
 

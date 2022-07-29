@@ -11,7 +11,7 @@ class AsStrictArray implements CastsAttributes
 	 */
 	public function get($model, string $key, $value, array $attributes): array
 	{
-		if (! isset($value)) {
+		if ($value === null) {
 			return [];
 		}
 
@@ -29,7 +29,7 @@ class AsStrictArray implements CastsAttributes
 	 */
 	public function set($model, string $key, $value, array $attributes): array
 	{
-		if (! isset($value)) {
+		if ($value === null) {
 			return null;
 		}
 

@@ -15,22 +15,22 @@ class AsStrictArray implements CastsAttributes
 			return [];
 		}
 
-		$value = json_decode($value, true);
+		$data = json_decode($value, true);
 
-		if (! is_array($value)) {
-			return [];
+		if (! is_array($data)) {
+			return [$value];
 		}
 
-		return $value;
+		return $data;
 	}
 
 	/**
 	 * @inheritDoc
 	 */
-	public function set($model, string $key, $value, array $attributes): array
+	public function set($model, string $key, $value, array $attributes): ?array
 	{
 		if ($value === null) {
-			return null;
+			return [$key => null];
 		}
 
 		if (! is_array($value)) {
@@ -38,7 +38,7 @@ class AsStrictArray implements CastsAttributes
 		}
 
 		if (count($value) === 0) {
-			return null;
+			return [$key => null];
 		}
 
 		return [$key => json_encode($value)];

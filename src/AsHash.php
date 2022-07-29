@@ -16,6 +16,6 @@ class AsHash implements CastsInboundAttributes
 			return null;
 		}
 
-		return Hash::make($value);
+		return Hash::make($value); // @codeCoverageIgnore
 	}
 }

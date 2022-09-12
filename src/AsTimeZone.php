@@ -10,7 +10,7 @@ class AsTimeZone implements CastsAttributes
 	/**
 	 * @inheritDoc
 	 */
-	public function get($model, string $key, $value, array $attributes)
+	public function get($model, string $key, $value, array $attributes): ?DateTimeZone
 	{
 		if ($value === null) {
 			return null;
@@ -22,7 +22,7 @@ class AsTimeZone implements CastsAttributes
 	/**
 	 * @inheritDoc
 	 */
-	public function set($model, string $key, $value, array $attributes)
+	public function set($model, string $key, $value, array $attributes): ?string
 	{
 		if ($value === null) {
 			return null;

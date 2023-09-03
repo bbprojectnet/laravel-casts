@@ -11,7 +11,7 @@ class AsEnumCollection implements CastsAttributes
 	 * Create new cast class instance
 	 *
 	 * @param \Illuminate\Contracts\Database\Eloquent\CastsAttributes $asCollection
-	 * @param class-string $enum
+	 * @param class-string<\BackedEnum> $enum
 	 * @return void
 	 */
 	public function __construct(

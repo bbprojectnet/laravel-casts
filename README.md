@@ -17,6 +17,16 @@ composer require bbprojectnet/laravel-casts
 
 ## Casts
 
+### AsEnumArray
+
+Casts a value (json) to a array of Enums.
+
+```php
+protected $casts = [
+	'roles' => AsEnumArray::class . ':' . Role::class,
+];
+```
+
 ### AsEnumCollection
 
 Casts a value (json) to a Laravel Collection of Enums.

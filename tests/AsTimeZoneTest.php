@@ -1,6 +1,9 @@
 <?php
 
+namespace BBProjectNet\LaravelCasts\Tests;
+
 use BBProjectNet\LaravelCasts\AsTimeZone;
+use DateTimeZone;
 use PHPUnit\Framework\TestCase;
 
 class AsTimeZoneTest extends TestCase

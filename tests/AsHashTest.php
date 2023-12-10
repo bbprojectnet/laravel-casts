@@ -1,5 +1,7 @@
 <?php
 
+namespace BBProjectNet\LaravelCasts\Tests;
+
 use BBProjectNet\LaravelCasts\AsHash;
 use PHPUnit\Framework\TestCase;
 

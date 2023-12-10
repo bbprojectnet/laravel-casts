@@ -1,5 +1,7 @@
 <?php
 
+namespace BBProjectNet\LaravelCasts\Tests;
+
 use BBProjectNet\LaravelCasts\AsInterval;
 use Carbon\CarbonInterval;
 use PHPUnit\Framework\TestCase;

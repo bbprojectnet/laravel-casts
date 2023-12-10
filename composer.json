@@ -17,7 +17,8 @@
 	],
 	"autoload": {
 		"psr-4": {
-			"BBProjectNet\\LaravelCasts\\": "src/"
+			"BBProjectNet\\LaravelCasts\\": "src/",
+			"BBProjectNet\\LaravelCasts\\Tests\\": "tests/"
 		}
 	},
 	"require-dev": {

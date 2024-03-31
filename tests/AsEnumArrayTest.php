@@ -3,6 +3,7 @@
 namespace BBProjectNet\LaravelCasts\Tests;
 
 use BBProjectNet\LaravelCasts\AsEnumArray;
+use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\TestCase;
 use ValueError;
 
@@ -15,7 +16,7 @@ enum __Enum431: string
 
 class AsEnumArrayTest extends TestCase
 {
-	public function get_provider()
+	public static function get_provider(): array
 	{
 		return [
 			'no value' => [null, null],
@@ -25,10 +26,8 @@ class AsEnumArrayTest extends TestCase
 		];
 	}
 
-	/**
-	 * @dataProvider get_provider
-	 */
-	public function test_get($value, $expected)
+	#[DataProvider('get_provider')]
+	public function test_get(mixed $value, ?array $expected): void
 	{
 		$asEnumArray = new AsEnumArray(__Enum431::class);
 
@@ -37,7 +36,7 @@ class AsEnumArrayTest extends TestCase
 		$this->assertSame($expected, $result);
 	}
 
-	public function test_get_when_has_unknown_value()
+	public function test_get_when_has_unknown_value(): void
 	{
 		$asEnumArray = new AsEnumArray(__Enum431::class);
 
@@ -46,7 +45,7 @@ class AsEnumArrayTest extends TestCase
 		$asEnumArray->get(null, 'data', json_encode(['a', 'd', 'c']), []);
 	}
 
-	public function set_provider()
+	public static function set_provider(): array
 	{
 		return [
 			'no value' => [null, null],
@@ -57,10 +56,8 @@ class AsEnumArrayTest extends TestCase
 		];
 	}
 
-	/**
-	 * @dataProvider set_provider
-	 */
-	public function test_set($value, $expected)
+	#[DataProvider('set_provider')]
+	public function test_set(mixed $value, ?string $expected): void
 	{
 		$asEnumArray = new AsEnumArray(__Enum431::class);
 

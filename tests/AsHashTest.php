@@ -3,21 +3,21 @@
 namespace BBProjectNet\LaravelCasts\Tests;
 
 use BBProjectNet\LaravelCasts\AsHash;
+use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\TestCase;
 
 class AsHashTest extends TestCase
 {
-	public function set_provider()
+
+	public static function set_provider(): array
 	{
 		return [
 			'no value' => [null, null],
 		];
 	}
 
-	/**
-	 * @dataProvider set_provider
-	 */
-	public function test_set($value, $expected)
+	#[DataProvider('set_provider')]
+	public function test_set(mixed $value, ?string $expected): void
 	{
 		$asHash = new AsHash();
 

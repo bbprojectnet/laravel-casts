@@ -3,6 +3,8 @@
 namespace BBProjectNet\LaravelCasts\Tests;
 
 use BBProjectNet\LaravelCasts\AsEnumCollection;
+use Illuminate\Support\Collection;
+use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\TestCase;
 use ValueError;
 
@@ -15,7 +17,7 @@ enum __Enum295: string
 
 class AsEnumCollectionTest extends TestCase
 {
-	public function get_provider()
+	public static function get_provider(): array
 	{
 		return [
 			'no value' => [null, null],
@@ -25,10 +27,8 @@ class AsEnumCollectionTest extends TestCase
 		];
 	}
 
-	/**
-	 * @dataProvider get_provider
-	 */
-	public function test_get($value, $expected)
+	#[DataProvider('get_provider')]
+	public function test_get(mixed $value, ?Collection $expected): void
 	{
 		$asEnumCollection = new AsEnumCollection(__Enum295::class);
 
@@ -37,7 +37,7 @@ class AsEnumCollectionTest extends TestCase
 		$this->assertSame($expected?->all(), $result?->all());
 	}
 
-	public function test_get_when_has_unknown_value()
+	public function test_get_when_has_unknown_value(): void
 	{
 		$asEnumCollection = new AsEnumCollection(__Enum295::class);
 
@@ -46,7 +46,7 @@ class AsEnumCollectionTest extends TestCase
 		$asEnumCollection->get(null, 'data', json_encode(['a', 'd', 'c']), []);
 	}
 
-	public function set_provider()
+	public static function set_provider(): array
 	{
 		return [
 			'no value' => [null, null],
@@ -57,10 +57,8 @@ class AsEnumCollectionTest extends TestCase
 		];
 	}
 
-	/**
-	 * @dataProvider set_provider
-	 */
-	public function test_set($value, $expected)
+	#[DataProvider('set_provider')]
+	public function test_set(mixed $value, ?string $expected): void
 	{
 		$asEnumCollection = new AsEnumCollection(__Enum295::class);
 

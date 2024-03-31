@@ -5,7 +5,7 @@ This package provides some additional castable classes for Laravel.
 ## Requirements
 
 - PHP 8.1 and above
-- Laravel 9 or 10
+- Laravel 9, 10 or 11
 
 ## Installation
 

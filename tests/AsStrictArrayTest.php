@@ -3,11 +3,12 @@
 namespace BBProjectNet\LaravelCasts\Tests;
 
 use BBProjectNet\LaravelCasts\AsStrictArray;
+use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\TestCase;
 
 class AsStrictArrayTest extends TestCase
 {
-	public function get_provider()
+	public static function get_provider(): array
 	{
 		return [
 			'no value' => [null, []],
@@ -17,10 +18,8 @@ class AsStrictArrayTest extends TestCase
 		];
 	}
 
-	/**
-	 * @dataProvider get_provider
-	 */
-	public function test_get($value, $expected)
+	#[DataProvider('get_provider')]
+	public function test_get(mixed $value, array $expected): void
 	{
 		$asStrictArray = new AsStrictArray();
 
@@ -29,7 +28,7 @@ class AsStrictArrayTest extends TestCase
 		$this->assertSame($expected, $result);
 	}
 
-	public function set_provider()
+	public static function set_provider(): array
 	{
 		return [
 			'no value' => [null, null],
@@ -40,10 +39,8 @@ class AsStrictArrayTest extends TestCase
 		];
 	}
 
-	/**
-	 * @dataProvider set_provider
-	 */
-	public function test_set($value, $expected)
+	#[DataProvider('set_provider')]
+	public function test_set(mixed $value, ?string $expected): void
 	{
 		$asStrictArray = new AsStrictArray();
 
